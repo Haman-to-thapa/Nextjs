@@ -45,3 +45,13 @@ const SnippetDetailsPage = async ({ params }: {
 }
 
 export default SnippetDetailsPage
+
+
+export const generateStalicParams = async () => {
+  const snippet = await prisma.snippet.findMany();
+
+
+  return snippet.map((snippet) => {
+    return { id: snippet.id.toString() }
+  })
+}
